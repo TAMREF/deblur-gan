@@ -46,7 +46,8 @@ def load_images(path, n_images):
         n_images = float("inf") #inf = 75
     A_paths, B_paths = os.path.join(path, 'astro_img_blurred'), os.path.join(path, 'astro_rgb') #blur : A, sharp : B
     all_A_paths, all_B_paths = list_image_files(A_paths), list_image_files(B_paths)
-    images_A, images_B = [], []
+    print(all_A_paths, all_B_paths)
+	images_A, images_B = [], []
     images_A_paths, images_B_paths = [], []
     for path_A, path_B in zip(all_A_paths, all_B_paths):
         img_A, img_B = load_image(path_A), load_image(path_B)
