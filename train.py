@@ -51,6 +51,7 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 		d_losses = []
 		d_on_g_losses = []
 		print('Flag #1 : Loop')
+		print('data size : {}'.format(x_train.shape[0]))
 		for index in range(int(x_train.shape[0] / batch_size)):
 			print(index)
 			batch_indexes = permutated_indexes[index*batch_size:(index+1)*batch_size]
