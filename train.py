@@ -52,6 +52,7 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 		d_on_g_losses = []
 		print('Flag #1 : Loop')
 		for index in range(int(x_train.shape[0] / batch_size)):
+			print(index)
 			batch_indexes = permutated_indexes[index*batch_size:(index+1)*batch_size]
 			image_blur_batch = x_train[batch_indexes]
 			image_full_batch = y_train[batch_indexes]
