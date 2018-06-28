@@ -89,9 +89,8 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 @click.option('--batch_size', default=16, help='Size of batch')
 @click.option('--epoch_num', default=4, help='Number of epochs for training')
 @click.option('--critic_updates', default=5, help='Number of discriminator training')
-@click.option('--DEBUG',default=false, help='activate tam_print functions')
+@click.option('--tam_print',default=None, help='activate tam_print functions')
 
-tam_print = print if DEBUG else None
 
 def train_command(n_images, batch_size, epoch_num, critic_updates):
 	return train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates)
