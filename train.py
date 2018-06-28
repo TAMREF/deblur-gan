@@ -58,7 +58,7 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
             generated_images = g.predict(x=image_blur_batch, batch_size=batch_size)
 
             for i in range(critic_updates):
-			    print('critic training : {}'.format(i))
+				print('critic training : {}'.format(i))
                 d_loss_real = d.train_on_batch(image_full_batch, output_true_batch)
                 d_loss_fake = d.train_on_batch(generated_images, output_false_batch)
                 d_loss = 0.5 * np.add(d_loss_fake, d_loss_real)
