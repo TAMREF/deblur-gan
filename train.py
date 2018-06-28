@@ -50,15 +50,18 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 
 		d_losses = []
 		d_on_g_losses = []
+		print('Flag #1 : Loop')
 		for index in range(int(x_train.shape[0] / batch_size)):
 			batch_indexes = permutated_indexes[index*batch_size:(index+1)*batch_size]
 			image_blur_batch = x_train[batch_indexes]
 			image_full_batch = y_train[batch_indexes]
-
+			print('Flag #2 : x_train, y_train')
+			
 			generated_images = g.predict(x=image_blur_batch, batch_size=batch_size)
-
+			print('Flag #3 : g.predict')
+			
 			for i in range(critic_updates):
-				print('critic training : {}'.format(i))
+				print('Flag #4 : critic training : {}'.format(i))
 				d_loss_real = d.train_on_batch(image_full_batch, output_true_batch)
 				d_loss_fake = d.train_on_batch(generated_images, output_false_batch)
 				d_loss = 0.5 * np.add(d_loss_fake, d_loss_real)
