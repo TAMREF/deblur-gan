@@ -22,7 +22,7 @@ def save_all_weights(d, g, epoch_number, current_loss):
 
 
 def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
-    data = load_images('./images/train', n_images)
+    data = load_images('./images', n_images)
     y_train, x_train = data['B'], data['A']
 
     g = generator_model()
