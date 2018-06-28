@@ -92,8 +92,8 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 @click.option('--DEBUG',default=False, help='activate debug print functions')
 
 
-def train_command(n_images, batch_size, epoch_num, critic_updates):
-	return train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates)
+def train_command(n_images, batch_size, epoch_num, critic_updates,DEBUG):
+	return train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates,DEBUG)
 
 
 if __name__ == '__main__':
