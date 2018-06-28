@@ -21,7 +21,7 @@ def save_all_weights(d, g, epoch_number, current_loss):
 	d.save_weights(os.path.join(save_dir, 'discriminator_{}.h5'.format(epoch_number)), True)
 
 
-def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
+def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5, dodebug=False):
 	data = load_images('./images', n_images)
 	y_train, x_train = data['B'], data['A']
 
