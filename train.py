@@ -50,20 +50,20 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 
 		d_losses = []
 		d_on_g_losses = []
-		if DEBUG : tam_print('Flag #1 : Loop')
+		if dodebug : tam_print('Flag #1 : Loop')
 		tam_print(x_train.shape)
 		for index in range(int(x_train.shape[0] / batch_size)):
 			tam_print(index)
 			batch_indexes = permutated_indexes[index*batch_size:(index+1)*batch_size]
 			image_blur_batch = x_train[batch_indexes]
 			image_full_batch = y_train[batch_indexes]
-			if DEBUG : tam_print('Flag #2 : x_train, y_train')
+			if dodebug : tam_print('Flag #2 : x_train, y_train')
 			
 			generated_images = g.predict(x=image_blur_batch, batch_size=batch_size)
-			if DEBUG : tam_print('Flag #3 : g.predict')
+			if dodebug : tam_print('Flag #3 : g.predict')
 			
 			for i in range(critic_updates):
-				if DEBUG : tam_print('Flag #4 : critic training : {}'.format(i))
+				if dodebug : tam_print('Flag #4 : critic training : {}'.format(i))
 				d_loss_real = d.train_on_batch(image_full_batch, output_true_batch)
 				d_loss_fake = d.train_on_batch(generated_images, output_false_batch)
 				d_loss = 0.5 * np.add(d_loss_fake, d_loss_real)
@@ -89,11 +89,11 @@ def train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates=5):
 @click.option('--batch_size', default=16, help='Size of batch')
 @click.option('--epoch_num', default=4, help='Number of epochs for training')
 @click.option('--critic_updates', default=5, help='Number of discriminator training')
-@click.option('--DEBUG',default=False, help='activate debug print functions')
+@click.option('--dododebug',default=False, help='activate dodebug print functions')
 
 
-def train_command(n_images, batch_size, epoch_num, critic_updates,DEBUG):
-	return train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates,DEBUG)
+def train_command(n_images, batch_size, epoch_num, critic_updates,dododebug):
+	return train_multiple_outputs(n_images, batch_size, epoch_num, critic_updates,dododebug)
 
 
 if __name__ == '__main__':
