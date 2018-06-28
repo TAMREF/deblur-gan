@@ -1,4 +1,5 @@
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 import datetime
 import click
 import numpy as np
@@ -94,4 +95,5 @@ def train_command(n_images, batch_size, epoch_num, critic_updates):
 
 
 if __name__ == '__main__':
+	
 	train_command()
